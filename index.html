@@ -365,12 +365,7 @@
   /* ── ABOUT ── */
   #about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
+ 
 
   .about-text p {
     color: var(--muted);
@@ -380,15 +375,15 @@
 
   .about-text p strong { color: var(--text); font-weight: 500; }
 
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
 
   .stat-cell {
     background: var(--surface2);
