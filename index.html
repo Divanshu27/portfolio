@@ -4,18 +4,24 @@
 <meta charset="UTF-8">
 <title>Divanshu Portfolio</title>
 
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: #0f172a;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f172a, #020617);
   color: white;
+  overflow-x: hidden;
 }
 
 header {
   text-align: center;
-  padding: 60px;
-  background: #1e293b;
+  padding: 80px 20px;
+}
+
+h1 {
+  font-size: 3rem;
 }
 
 h1 span {
@@ -26,62 +32,80 @@ nav {
   display: flex;
   justify-content: center;
   gap: 20px;
-  background: #334155;
-  padding: 10px;
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  backdrop-filter: blur(10px);
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
 }
 
 section {
-  padding: 50px;
+  padding: 60px 20px;
   text-align: center;
 }
 
 .projects {
   display: flex;
   justify-content: center;
-  gap: 25px;
   flex-wrap: wrap;
+  gap: 25px;
 }
 
 .card {
-  background: #1e293b;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
   width: 320px;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 20px;
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px cyan;
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px cyan;
 }
 
 button {
   padding: 10px 20px;
-  background: cyan;
   border: none;
+  background: cyan;
   cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
+  border-radius: 10px;
 }
 
 .tag {
   display: inline-block;
-  background: #0ea5e9;
-  padding: 5px 10px;
-  border-radius: 10px;
   margin: 5px;
+  padding: 5px 10px;
+  background: #0ea5e9;
+  border-radius: 10px;
   font-size: 12px;
 }
 
-footer {
-  background: #1e293b;
-  padding: 20px;
+/* Toggle */
+.toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+/* Light mode */
+.light {
+  background: #f1f5f9;
+  color: black;
+}
+
+.light nav {
+  background: rgba(0,0,0,0.1);
+}
+
+.light .card {
+  background: white;
+  color: black;
 }
 </style>
 
@@ -89,8 +113,10 @@ footer {
 
 <body>
 
+<div class="toggle" onclick="toggleMode()">🌗</div>
+
 <header>
-  <h1>Hi, I'm <span>Divanshu</span> 👋</h1>
+  <h1>Hi, I'm <span>Divanshu</span> 🚀</h1>
   <p id="typing"></p>
 </header>
 
@@ -103,55 +129,47 @@ footer {
 <section id="about">
   <h2>About Me</h2>
   <p>
-    I build innovative web applications with focus on accessibility, AI, and real-world impact.
-    My projects combine voice interaction, smart systems, and user-centric design.
+    I build intelligent and accessible web applications combining AI, voice interaction,
+    and real-world problem solving.
   </p>
 </section>
 
 <section id="projects">
-  <h2>My Projects 🚀</h2>
+  <h2>Projects 🔥</h2>
 
   <div class="projects">
 
-    <!-- SoundBite -->
     <div class="card">
       <h3>🎙️ SoundBite</h3>
-      <p>
-        Voice-first food ordering app designed for accessibility.
-        Users can control the app using voice commands like ordering food, opening cart, and tracking orders.
-      </p>
-
+      <p>Voice-controlled food ordering system for accessibility.</p>
       <div>
         <span class="tag">Voice AI</span>
         <span class="tag">Accessibility</span>
-        <span class="tag">React</span>
       </div>
-
-      <button onclick="openProject('https://github.com/Divanshu27/soundbite')">
-        View Project
+      <button onclick="openProject('https://github.com/yourusername/soundbite')">
+        View
       </button>
     </div>
 
-    <!-- ChronoBite -->
     <div class="card">
-      <h3>🤖 ChronoBite Pro</h3>
-      <p>
-        AI-powered smart food system based on circadian rhythm, health tracking, and personalized nutrition.
-        Includes heart rate analysis and intelligent meal suggestions.
-      </p>
-
+      <h3>🤖 ChronoBite</h3>
+      <p>AI-based smart nutrition system using circadian rhythm.</p>
       <div>
         <span class="tag">AI</span>
         <span class="tag">Health Tech</span>
-        <span class="tag">Advanced JS</span>
       </div>
-
-      <button onclick="openProject('https://github.com/Divanshu27/chronobite')">
-        View Project
+      <button onclick="openProject('https://github.com/yourusername/chronobite')">
+        View
       </button>
     </div>
 
   </div>
+</section>
+
+<section>
+  <h2>🎤 Try Voice Command (Demo)</h2>
+  <button onclick="startVoice()">Start Voice</button>
+  <p id="voiceOutput"></p>
 </section>
 
 <section id="contact">
@@ -159,15 +177,10 @@ footer {
   <p>Email: divanshuramful58@gmail.com</p>
 </section>
 
-<footer>
-  <p>© 2026 Divanshu | Built with ❤️</p>
-</footer>
-
 <script>
-// Typing animation
-const text = "Voice AI • Accessibility • Full Stack Developer";
+// Typing
+const text = "AI • Voice Tech • Full Stack Developer";
 let i = 0;
-
 function typing() {
   if (i < text.length) {
     document.getElementById("typing").innerHTML += text.charAt(i);
@@ -177,9 +190,25 @@ function typing() {
 }
 typing();
 
+// Dark mode toggle
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+
 // Open project
 function openProject(link) {
   window.open(link, "_blank");
+}
+
+// Voice demo
+function startVoice() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.start();
+
+  recognition.onresult = function(event) {
+    const text = event.results[0][0].transcript;
+    document.getElementById("voiceOutput").innerText = text;
+  }
 }
 </script>
 
