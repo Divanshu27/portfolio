@@ -10,13 +10,16 @@ body {
   font-family: Arial;
   background: #0f172a;
   color: white;
-  scroll-behavior: smooth;
 }
 
 header {
   text-align: center;
   padding: 60px;
   background: #1e293b;
+}
+
+h1 span {
+  color: cyan;
 }
 
 nav {
@@ -41,13 +44,13 @@ section {
 .projects {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
 .card {
   background: #1e293b;
-  width: 300px;
+  width: 320px;
   padding: 20px;
   border-radius: 15px;
   transition: 0.3s;
@@ -55,7 +58,7 @@ section {
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px cyan;
+  box-shadow: 0 0 25px cyan;
 }
 
 button {
@@ -64,12 +67,21 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background: #0ea5e9;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 12px;
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
   background: #1e293b;
+  padding: 20px;
 }
 </style>
 
@@ -78,7 +90,7 @@ footer {
 <body>
 
 <header>
-  <h1>Hi, I'm Divanshu 👋</h1>
+  <h1>Hi, I'm <span>Divanshu</span> 👋</h1>
   <p id="typing"></p>
 </header>
 
@@ -91,29 +103,51 @@ footer {
 <section id="about">
   <h2>About Me</h2>
   <p>
-    I am a passionate developer focused on building innovative and impactful projects.
-    I enjoy creating user-friendly and unique solutions.
+    I build innovative web applications with focus on accessibility, AI, and real-world impact.
+    My projects combine voice interaction, smart systems, and user-centric design.
   </p>
 </section>
 
 <section id="projects">
-  <h2>My Projects</h2>
+  <h2>My Projects 🚀</h2>
 
   <div class="projects">
 
+    <!-- SoundBite -->
     <div class="card">
-      <h3>Project 1</h3>
-      <p>Replace this with your first project description</p>
-      <button onclick="openProject('https://github.com/yourusername/project1')">
-        View Code
+      <h3>🎙️ SoundBite</h3>
+      <p>
+        Voice-first food ordering app designed for accessibility.
+        Users can control the app using voice commands like ordering food, opening cart, and tracking orders.
+      </p>
+
+      <div>
+        <span class="tag">Voice AI</span>
+        <span class="tag">Accessibility</span>
+        <span class="tag">React</span>
+      </div>
+
+      <button onclick="openProject('https://github.com/Divanshu27/soundbite')">
+        View Project
       </button>
     </div>
 
+    <!-- ChronoBite -->
     <div class="card">
-      <h3>Project 2</h3>
-      <p>Replace this with your second project description</p>
-      <button onclick="openProject('https://github.com/yourusername/project2')">
-        View Code
+      <h3>🤖 ChronoBite Pro</h3>
+      <p>
+        AI-powered smart food system based on circadian rhythm, health tracking, and personalized nutrition.
+        Includes heart rate analysis and intelligent meal suggestions.
+      </p>
+
+      <div>
+        <span class="tag">AI</span>
+        <span class="tag">Health Tech</span>
+        <span class="tag">Advanced JS</span>
+      </div>
+
+      <button onclick="openProject('https://github.com/Divanshu27/chronobite')">
+        View Project
       </button>
     </div>
 
@@ -122,16 +156,16 @@ footer {
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: yourmail@gmail.com</p>
+  <p>Email: divanshuramful58@gmail.com</p>
 </section>
 
 <footer>
-  <p>© 2026 Divanshu</p>
+  <p>© 2026 Divanshu | Built with ❤️</p>
 </footer>
 
 <script>
-// Typing effect
-const text = "Web Developer | Creative Thinker | Problem Solver";
+// Typing animation
+const text = "Voice AI • Accessibility • Full Stack Developer";
 let i = 0;
 
 function typing() {
@@ -141,7 +175,6 @@ function typing() {
     setTimeout(typing, 40);
   }
 }
-
 typing();
 
 // Open project
